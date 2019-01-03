@@ -160,39 +160,5 @@
 <div class="footer"><p style="color:white;">Copyright &copy; 2018-2019 electroBest</p></div>
 </div>
 
-<script type="text/javascript">
-/*--------Fixed navigation---------*
-window.onscroll = function() {scrollFunction()};
-function scrollFunction() {
-    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-        document.getElementById("navigation").style.position = "relative";
-    } else {
-        document.getElementById("navigation").style.position = "fixed";
-    }
-}*/
-  /*-----Carousel--------*/
-  $(document).ready(function(){
-
-$('#itemslider').carousel({ interval: 3000 });
-
-$('.carousel-showmanymoveone .item').each(function(){
-var itemToClone = $(this);
-
-for (var i=1;i<6;i++) {
-itemToClone = itemToClone.next();
-
-if (!itemToClone.length) {
-itemToClone = $(this).siblings(':first');
-}
-
-itemToClone.children(':first-child').clone()
-.addClass("cloneditem-"+(i))
-.appendTo($(this));
-}
-});
-});
-
-
-</script>
 </body>
 </html>

@@ -140,12 +140,12 @@
   <ul>
    
 
-    <li><a href="#" class="clr"><div class="items"><div class="badge">25%</div><div class="item-head"><img src="css/images/samsungs9_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>SAMSUNG Galaxy S9 256Gb</p><div class="description"><p><strike>839,99&euro;</strike>629,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#" class="clr"><div class="items"><div class="badge">25%</div><div class="item-head"><img src="css/images/samsungs9_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>SAMSUNG Galaxy S9 256Gb</p><div class="description"><p><strike>839,99&euro;</strike>629,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
 
 
-    <li><a href="#" class="clr"><div class="items"><div class="item-head"><img src="css/images/samsungs8_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>SAMSUNG Galaxy S8 256GB</p><div class="description"><p>800,00&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#" class="clr"><div class="items"><div class="item-head"><img src="css/images/samsungs8_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>SAMSUNG Galaxy S8 256GB</p><div class="description"><p>800,00&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
 
-    <li><a href="#" class="clr"><div class="items"><div class="item-head"><img src="css/images/note_9s.png" class="img-responsive center-block"></div><div class="item-footer"><p>SAMSUNG Galaxy NOTE 9</p><div class="description"><p>1099,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#" class="clr"><div class="items"><div class="item-head"><img src="css/images/note_9s.png" class="img-responsive center-block"></div><div class="item-footer"><p>SAMSUNG Galaxy NOTE 9</p><div class="description"><p>1099,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
   </ul>
 
 </div>
@@ -156,12 +156,12 @@
 <div class="a-cont" id="apple">
   
   <ul>
-    <li><a href="#apple" class="clr"><div class="items"><div class="item-head"><img src="css/images/iphonex_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>Iphone XS 512GB</p><div class="description"><p>1199,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#apple" class="clr"><div class="items"><div class="item-head"><img src="css/images/iphonex_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>Iphone XS 512GB</p><div class="description"><p>1199,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
 
 
-    <li><a href="#apple" class="clr"><div class="items"><div class="item-head"><img src="css/images/iphone8_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>Iphone 8 256GB</p><div class="description"><p>799,69&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#apple" class="clr"><div class="items"><div class="item-head"><img src="css/images/iphone8_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>Iphone 8 256GB</p><div class="description"><p>799,69&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
 
-    <li><a href="#apple" class="clr"><div class="items"><div class="badge">14%</div><div class="item-head"><img src="css/images/iphonex_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>Iphone X 256GB</p><div class="description"><p><strike>849,99&euro;</strike>790,49&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#apple" class="clr"><div class="items"><div class="badge">14%</div><div class="item-head"><img src="css/images/iphonex_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>Iphone X 256GB</p><div class="description"><p><strike>849,99&euro;</strike>790,49&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
 
   </ul>
 
@@ -176,12 +176,12 @@
 <div class="a-cont" id="asus">
   
   <ul>
-    <li><a href="#asus" class="clr"><div class="items"><div class="item-head"><img src="css/images/nokia8.png" class="img-responsive center-block"></div><div class="item-footer"><p>NOKIA 6 </p><div class="description"><p>349,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#asus" class="clr"><div class="items"><div class="item-head"><img src="css/images/nokia8.png" class="img-responsive center-block"></div><div class="item-footer"><p>NOKIA 6 </p><div class="description"><p>349,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
 
 
-    <li><a href="#asus" class="clr"><div class="items"><div class="item-head"><img src="css/images/nokia8.png" class="img-responsive center-block"></div><div class="item-footer"><p>NOKIA 7</p><div class="description"><p>399,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#asus" class="clr"><div class="items"><div class="item-head"><img src="css/images/nokia8.png" class="img-responsive center-block"></div><div class="item-footer"><p>NOKIA 7</p><div class="description"><p>399,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
 
-    <li><a href="#asus" class="clr"><div class="items"><div class="item-head"><img src="css/images/nokia8.png" class="img-responsive center-block"></div><div class="item-footer"><p>NOKIA 8</p><div class="description"><p>440,00&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#asus" class="clr"><div class="items"><div class="item-head"><img src="css/images/nokia8.png" class="img-responsive center-block"></div><div class="item-footer"><p>NOKIA 8</p><div class="description"><p>440,00&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
 
 
   </ul>
@@ -197,12 +197,12 @@
 <div class="a-cont" id="lenovo">
   
   <ul>
-    <li><a href="#lenovo" class="clr"><div class="items"><div class="item-head"><img src="css/images/huawei_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>HUAWEI PRO MATE P20</p><div class="description"><p>599,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#lenovo" class="clr"><div class="items"><div class="item-head"><img src="css/images/huawei_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>HUAWEI PRO MATE P20</p><div class="description"><p>599,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
 
 
-    <li><a href="#lenovo" class="clr"><div class="items"><div class="item-head"><img src="css/images/huawei_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>HUAWEI P20</p><div class="description"><p>499,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#lenovo" class="clr"><div class="items"><div class="item-head"><img src="css/images/huawei_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>HUAWEI P20</p><div class="description"><p>499,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
 
-    <li><a href="#lenovo" class="clr"><div class="items"><div class="item-head"><img src="css/images/huawei_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>HUAWEI P9 LITE</p><div class="description"><p>349,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" onclick="setcheckoutLocation('<?php echo $this->getAddToCartUrl($_product) ?>'')"><div class="back-addc"><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
+    <li><a href="#lenovo" class="clr"><div class="items"><div class="item-head"><img src="css/images/huawei_img.png" class="img-responsive center-block"></div><div class="item-footer"><p>HUAWEI P9 LITE</p><div class="description"><p>349,99&euro;</p></div><button type="button" title="Buy Now" class="button btn-cart add-cart" ><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></div><p><span class="glyphicon glyphicon-shopping-cart" style="color:white !important;"></span>add</p></button><a href="#" target="_blank"><div class="description-2"><p>&gt;&nbsp;See description</p></div></a></div></div></a></li>
 
   </ul>
 
@@ -237,39 +237,6 @@
 <div class="footer"><p style="color:white;">Copyright &copy; 2018-2019 electroBest</p></div>
 </div>
 
-<script type="text/javascript">
-/*--------Fixed navigation---------*
-window.onscroll = function() {scrollFunction()};
-function scrollFunction() {
-    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-        document.getElementById("navigation").style.position = "relative";
-    } else {
-        document.getElementById("navigation").style.position = "fixed";
-    }
-}*/
-  /*-----Carousel--------*/
-  $(document).ready(function(){
 
-$('#itemslider').carousel({ interval: 3000 });
-
-$('.carousel-showmanymoveone .item').each(function(){
-var itemToClone = $(this);
-
-for (var i=1;i<6;i++) {
-itemToClone = itemToClone.next();
-
-if (!itemToClone.length) {
-itemToClone = $(this).siblings(':first');
-}
-
-itemToClone.children(':first-child').clone()
-.addClass("cloneditem-"+(i))
-.appendTo($(this));
-}
-});
-});
-
-
-</script>
 </body>
 </html>
