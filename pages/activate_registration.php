@@ -1,3 +1,22 @@
+<?php
+  session_start();
+  require_once 'config.php';
+
+  if(isset($_GET["token"])){
+    $token=$_GET["token"];
+
+    $query = "select * from users where token = '{$token}'";
+    $query_run = mysqli_query($con,$query);
+    if(mysqli_num_rows($query_run)>0){
+      echo "You were successfully registered.";
+    }
+  }
+  else{
+    echo "Sorry, couldn't finish the registration process. Please click on the link in the email.";
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,7 +57,7 @@
               style="color:black !important;"
             ></span>
           </button>
-          <a class="navbar-brand child" href="../index.html"
+          <a class="navbar-brand child" href="../index.php"
             ><img
               src="css/images/logo7.png"
               class="child"
@@ -50,31 +69,31 @@
           <ul class="nav navbar-nav">
             <li class="dropdown">
               <div class="line"></div>
-              <a href="laptops.html">Laptops</a>
+              <a href="laptops.php">Laptops</a>
             </li>
             <li class="dropdown">
               <div class="line"></div>
-              <a href="smartphones.html">Smartphones</a>
+              <a href="smartphones.php">Smartphones</a>
             </li>
             <li class="dropdown">
               <div class="line"></div>
-              <a href="photo_video.html">Photo/Video</a>
+              <a href="photo_video.php">Photo/Video</a>
             </li>
             <li class="dropdown">
               <div class="line"></div>
-              <a href="tv.html">TV</a>
+              <a href="tv.php">TV</a>
             </li>
             <li class="dropdown">
               <div class="line"></div>
               <a
                 class="dropdown-toggle"
                 data-toggle="dropdown"
-                href="software.html"
+                href="software.php"
                 >Software<span class="caret"></span
               ></a>
               <ul class="dropdown-menu">
-                <li><a href="operating_systems.html">Operating Systems</a></li>
-                <li><a href="office_app.html">Office Applications</a></li>
+                <li><a href="operating_systems.php">Operating Systems</a></li>
+                <li><a href="office_app.php">Office Applications</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -82,18 +101,18 @@
               <a
                 class="dropdown-toggle back"
                 data-toggle="dropdown"
-                href="audio.html"
+                href="audio.php"
                 >Audio<span class="caret"></span
               ></a>
               <ul class="dropdown-menu">
-                <li><a href="in_ear.html">Headphones - In ear</a></li>
-                <li><a href="on_ear.html">Headphones - On ear</a></li>
-                <li><a href="sounsystem.html">Soundsystems</a></li>
+                <li><a href="in_ear.php">Headphones - In ear</a></li>
+                <li><a href="on_ear.php">Headphones - On ear</a></li>
+                <li><a href="sounsystem.php">Soundsystems</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <div class="line"></div>
-              <a class="back" href="games.html">Games</a>
+              <a class="back" href="games.php">Games</a>
             </li>
             <li>
               <form class="navbar-form navbar-left" action="/action_page.php">
@@ -117,26 +136,53 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="background:none;">
+                        <!-- if no user is logged in -->
+                        <?php if(!isset($_SESSION["user_id"])) {
+              ?>
             <li>
               <div class="line"></div>
-              <a href="pages/register.html" class="no-back"
+              <a href="pages/register.php" class="no-back"
                 ><span
                   class="glyphicon glyphicon-user"
                   style="color:black !important;"
                 ></span>
-                Sign Up</a
-              >
+                Sign Up</a>
             </li>
             <li>
               <div class="line"></div>
-              <a href="pages/login.html" class="no-back"
+              <a href="pages/login.php" class="no-back"
                 ><span
                   class="glyphicon glyphicon-log-in"
                   style="color:black !important;"
                 ></span>
-                Login</a
-              >
+                Login</a>
             </li>
+
+            <?php
+              //this means that if the user is already logged in, show Logout option
+            }else {
+                ?>
+              <li>
+                <div class="line"></div>
+                  <a><i>Welcome, <?php echo $_SESSION['User_name']?></i></a >
+             </li>
+
+              <li>
+                <div class="line"></div>
+                <a href="pages/logout.php" class="no-back"
+                  ><span
+                    class="glyphicon glyphicon-log-out"
+                    style="color:black !important;"
+                  ></span>
+                  Log out</a >
+             </li>
+                
+            <?php
+
+              }
+            ?>
+
+
             <li>
               <div class="line"></div>
               <a href="#" class="no-back"
@@ -144,8 +190,7 @@
                   class="glyphicon glyphicon-shopping-cart"
                   style="color:black !important;"
                 ></span>
-                Cart</a
-              >
+                Cart</a>
             </li>
           </ul>
         </div>
@@ -156,60 +201,10 @@
       <div class="container">
         <div class="row main">
           <div class="panel-heading"></div>
-          <div class="main-login main-center">
-            <form class="form-horizontal" method="post" action="#">
-              <div class="form-group">
-                <label for="email" class="cols-sm-2 control-label"
-                  >Your Email</label
-                >
-                <div class="cols-sm-10">
-                  <div class="input-group">
-                    <span
-                      class="input-group-addon"
-                      style="border-radius:0px !important;"
-                      ><i class="fa fa-envelope fa" aria-hidden="true"></i
-                    ></span>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="email"
-                      id="email"
-                      placeholder="Enter your Email"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="password" class="cols-sm-2 control-label"
-                  >Password</label
-                >
-                <div class="cols-sm-10">
-                  <div class="input-group">
-                    <span
-                      class="input-group-addon"
-                      style="border-radius:0px !important;"
-                      ><i class="fa fa-lock fa-lg" aria-hidden="true"></i
-                    ></span>
-                    <input
-                      type="password"
-                      class="form-control"
-                      name="password"
-                      id="password"
-                      placeholder="Enter your Password"
-                    />
-                  </div>
-                </div>
-              </div>
+          
+              <span>Your registration has been successfully completed!</span>
 
-              <div class="form-group ">
-                <button
-                  type="button"
-                  class="btn btn-primary btn-lg btn-block login-button"
-                >
-                  Login
-                </button>
-              </div>
-            </form>
+           </form>
           </div>
         </div>
       </div>

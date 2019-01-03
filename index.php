@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  require_once 'pages/config.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,10 +18,12 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/online_users_handler.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Play"
       rel="stylesheet"
     />
+    
   </head>
   <body>
     <!-- ------------------------------ -->
@@ -26,6 +34,8 @@
       style="background:none;border:none;"
     >
       <div class="container" style="background:white;width:95% !important;">
+
+
         <div class="navbar-header">
           <button
             type="button"
@@ -38,7 +48,7 @@
               style="color:black !important;"
             ></span>
           </button>
-          <a class="navbar-brand child" href="index.html"
+          <a class="navbar-brand child" href="../index.php"
             ><img
               src="css/images/logo7.png"
               class="child"
@@ -48,35 +58,36 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
+
             <li class="dropdown">
               <div class="line"></div>
-              <a href="pages/laptops.html">Laptops</a>
+              <a href="pages/laptops.php">Laptops</a>
             </li>
             <li class="dropdown">
               <div class="line"></div>
-              <a href="pages/smartphones.html">Smartphones</a>
+              <a href="pages/smartphones.php">Smartphones</a>
             </li>
             <li class="dropdown">
               <div class="line"></div>
-              <a href="pages/photo_video.html">Photo/Video</a>
+              <a href="pages/photo_video.php">Photo/Video</a>
             </li>
             <li class="dropdown">
               <div class="line"></div>
-              <a href="pages/tv.html">TV</a>
+              <a href="pages/tv.php">TV</a>
             </li>
             <li class="dropdown">
               <div class="line"></div>
               <a
                 class="dropdown-toggle"
                 data-toggle="dropdown"
-                href="pages/software.html"
+                href="pages/software.php"
                 >Software<span class="caret"></span
               ></a>
               <ul class="dropdown-menu">
                 <li>
-                  <a href="pages/operating_systems.html">Operating Systems</a>
+                  <a href="pages/operating_systems.php">Operating Systems</a>
                 </li>
-                <li><a href="pages/office_app.html">Office Applications</a></li>
+                <li><a href="pages/office_app.php">Office Applications</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -84,18 +95,18 @@
               <a
                 class="dropdown-toggle back"
                 data-toggle="dropdown"
-                href="pages/audio.html"
+                href="pages/audio.php"
                 >Audio<span class="caret"></span
               ></a>
               <ul class="dropdown-menu">
-                <li><a href="pages/in_ear.html">Headphones - In ear</a></li>
-                <li><a href="pages/on_ear.html">Headphones - On ear</a></li>
-                <li><a href="pages/sounsystem.html">Soundsystems</a></li>
+                <li><a href="pages/in_ear.php">Headphones - In ear</a></li>
+                <li><a href="pages/on_ear.php">Headphones - On ear</a></li>
+                <li><a href="pages/sounsystem.php">Soundsystems</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <div class="line"></div>
-              <a class="back" href="pages/games.html">Games</a>
+              <a class="back" href="pages/games.php">Games</a>
             </li>
             <li>
               <form class="navbar-form navbar-left" action="/action_page.php">
@@ -119,26 +130,54 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="background:none;">
+
+            <!-- if no user is logged in -->
+            <?php if(!isset($_SESSION["user_id"])) {
+              ?>
             <li>
               <div class="line"></div>
-              <a href="pages/register.html" class="no-back"
+              <a href="pages/register.php" class="no-back"
                 ><span
                   class="glyphicon glyphicon-user"
                   style="color:black !important;"
                 ></span>
-                Sign Up</a
-              >
+                Sign Up</a>
             </li>
             <li>
               <div class="line"></div>
-              <a href="pages/login.html" class="no-back"
+              <a href="pages/login.php" class="no-back"
                 ><span
                   class="glyphicon glyphicon-log-in"
                   style="color:black !important;"
                 ></span>
-                Login</a
-              >
+                Login</a>
             </li>
+
+            <?php
+              //this means that if the user is already logged in, show Logout option
+            }else {
+                ?>
+              <li>
+                <div class="line"></div>
+                  <a><i>Welcome, <?php echo $_SESSION['User_name']?></i></a >
+             </li>
+
+              <li>
+                <div class="line"></div>
+                <a href="pages/logout.php" class="no-back"
+                  ><span
+                    class="glyphicon glyphicon-log-out"
+                    style="color:black !important;"
+                  ></span>
+                  Log out</a >
+             </li>
+                
+            <?php
+
+              }
+            ?>
+
+
             <li>
               <div class="line"></div>
               <a href="#" class="no-back"
@@ -146,14 +185,20 @@
                   class="glyphicon glyphicon-shopping-cart"
                   style="color:black !important;"
                 ></span>
-                Cart</a
-              >
+                Cart</a>
             </li>
           </ul>
+
+        
         </div>
       </div>
     </nav>
     <br />
+
+    <div style="padding-left:3%;">
+        <div>Online User Details: <span id="user_login_status">0</span></div>
+    </div>
+
     <div class="first-page">
       <h3>Just <strike>here</strike> you can find the best option for you!</h3>
       <div class="container-fluid carousel" style="background:none !important;">
@@ -397,7 +442,7 @@
           <table class="foot-table">
             <tr>
               <td>
-                <a href="pages/register.html" class="bg-1"
+                <a href="pages/register.php" class="bg-1"
                   ><div class="register">
                     <p class="lglg">Register</p>
                     <div class="back-backregin"></div></div
@@ -405,7 +450,7 @@
               </td>
               <td><p>&nbsp;&nbsp;<strike>or</strike>&nbsp;&nbsp;</p></td>
               <td>
-                <a href="pages/login.html" class="bg-1"
+                <a href="pages/login.php" class="bg-1"
                   ><div class="login">
                     <p class="lglg">Login</p>
                     <div class="back-backregin"></div></div
@@ -442,5 +487,52 @@
         });
       });
     </script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        <?php
+        if($_SESSION["user_id"])
+        {
+        ?>
+             //this function will update user last activity timestamp in the login_details database
+            function update_user_activity() {
+              var action = "update_time";
+              $.ajax({
+                url: "activity_details.php",
+                method: "POST",
+                data: { action: action },
+                success: function(data) {
+                  console.log("client updated its timestamp " + data)
+                }
+              });
+            }
+
+            setInterval(function() {
+              update_user_activity();
+            }, 1000);
+        <?php
+        }
+        ?>
+            fetch_user_login_data();
+            setInterval(function (){
+              fetch_user_login_data();  //every 3 seconds, display updated no. of online users 
+            }, 1000);
+           
+            function fetch_user_login_data(){
+              var action="fetch_data";
+              $.ajax({
+                url: "activity_details.php",
+                method: "POST",
+                data: { action: action },
+                success: function(data) {
+                    document.getElementById('user_login_status').innerHTML=data;//data is the response from the server
+                    console.log("waiting data from server: "+data +" user(s)");
+                }
+              })
+            }
+  
+      });
+    </script>
+    
   </body>
 </html>

@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,38 +28,38 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="glyphicon glyphicon-align-right" style="color:black !important;"></span>                       
       </button>
-      <a class="navbar-brand child" href="../index.html"><img src="css/images/logo7.png" class="child" width="174" height="34"></a>
+      <a class="navbar-brand child" href="../index.php"><img src="css/images/logo7.png" class="child" width="174" height="34"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar" >
       <ul class="nav navbar-nav">
         <li class="dropdown"><div class="line"></div>
-          <a href="laptops.html" >Laptops</a>
+          <a href="laptops.php" >Laptops</a>
         </li>
          <li class="dropdown"><div class="line"></div>
-          <a href="smartphones.html">Smartphones</a>
+          <a href="smartphones.php">Smartphones</a>
         </li>
          <li class="dropdown"><div class="line"></div>
-          <a href="photo_video.html">Photo/Video</a>
+          <a href="photo_video.php">Photo/Video</a>
         </li>
          <li class="dropdown"><div class="line"></div>
-          <a href="tv.html">TV</a>
+          <a href="tv.php">TV</a>
         </li>
          <li class="dropdown"><div class="line"></div>
-          <a class="dropdown-toggle" data-toggle="dropdown" href="software.html">Software<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="software.php">Software<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="operating_systems.html">Operating Systems</a></li>
-            <li><a href="office_app.html">Office Applications</a></li>
+            <li><a href="operating_systems.php">Operating Systems</a></li>
+            <li><a href="office_app.php">Office Applications</a></li>
           </ul>
         </li>
          <li class="dropdown"><div class="line"></div>
-          <a class="dropdown-toggle back" data-toggle="dropdown" href="audio.html">Audio<span class="caret"></span></a>
+          <a class="dropdown-toggle back" data-toggle="dropdown" href="audio.php">Audio<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="in_ear.html">Headphones - In ear</a></li>
-            <li><a href="on_ear.html">Headphones - On ear</a></li>
-            <li><a href="soundsystem.html">Soundsystems</a></li>
+            <li><a href="in_ear.php">Headphones - In ear</a></li>
+            <li><a href="on_ear.php">Headphones - On ear</a></li>
+            <li><a href="soundsystem.php">Soundsystems</a></li>
           </ul>
         </li>
-        <li class="dropdown"><div class="line"></div><a class="back" href="games.html">Games</a></li>
+        <li class="dropdown"><div class="line"></div><a class="back" href="games.php">Games</a></li>
         <li><form class="navbar-form navbar-left" action="/action_page.php">
       <div class="input-group" style="color:white !important;">
         <input type="text" class="form-control search-bar" placeholder="What are you looking for?" name="search">
@@ -68,9 +72,63 @@
     </form></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" style="background:none;">
-        <li><div class="line"></div><a href="#" class="no-back"><span class="glyphicon glyphicon-user" style="color:black !important;"></span> Sign Up</a></li>
-        <li><div class="line"></div><a href="#" class="no-back"><span class="glyphicon glyphicon-log-in" style="color:black !important;"></span> Login</a></li>
-        <li><div class="line"></div><a href="#" class="no-back"><span class="glyphicon glyphicon-shopping-cart" style="color:black !important;"></span> Cart</a></li>
+                    <!-- if no user is logged in -->
+                    <?php if(!isset($_SESSION["user_id"])) {
+              ?>
+            <li>
+              <div class="line"></div>
+              <a href="pages/register.php" class="no-back"
+                ><span
+                  class="glyphicon glyphicon-user"
+                  style="color:black !important;"
+                ></span>
+                Sign Up</a>
+            </li>
+            <li>
+              <div class="line"></div>
+              <a href="pages/login.php" class="no-back"
+                ><span
+                  class="glyphicon glyphicon-log-in"
+                  style="color:black !important;"
+                ></span>
+                Login</a>
+            </li>
+
+            <?php
+              //this means that if the user is already logged in, show Logout option
+            }else {
+                ?>
+              <li>
+                <div class="line"></div>
+                  <a><i>Logged in as <?php echo $_SESSION['User_name']?></i></a >
+             </li>
+
+              <li>
+                <div class="line"></div>
+                <a href="pages/logout.php" class="no-back"
+                  ><span
+                    class="glyphicon glyphicon-log-out"
+                    style="color:black !important;"
+                  ></span>
+                  Log out</a >
+             </li>
+                
+            <?php
+
+              }
+            ?>
+
+
+            <li>
+              <div class="line"></div>
+              <a href="#" class="no-back"
+                ><span
+                  class="glyphicon glyphicon-shopping-cart"
+                  style="color:black !important;"
+                ></span>
+                Cart</a>
+            </li>
+          </ul>
       </ul>
     </div>
   </div>  
@@ -102,13 +160,13 @@
     <table class="foot-table">
       <tr>
         <td>
-          <a href="#" class="bg-1"><div class="register"><p class="lglg">Register</p><div class="back-backregin"></div></div></a>
+          <a href="register.php" class="bg-1"><div class="register"><p class="lglg">Register</p><div class="back-backregin"></div></div></a>
         </td>
         <td>
           <p>&nbsp;&nbsp;<strike>or</strike>&nbsp;&nbsp;</p>
         </td>
         <td>
-          <a href="#" class="bg-1"><div class="login"><p class="lglg">Login</p><div class="back-backregin"></div></div></a>
+          <a href="login.php" class="bg-1"><div class="login"><p class="lglg">Login</p><div class="back-backregin"></div></div></a>
         </td>
       </tr>
       </table>
