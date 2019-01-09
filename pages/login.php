@@ -99,60 +99,16 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="laptops.php">Laptops</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="smartphones.php">Smartphones</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="photo_video.php">Photo/Video</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="tv.php">TV</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a
-                class="dropdown-toggle"
-                data-toggle="dropdown"
-                href="software.php"
-                >Software<span class="caret"></span
-              ></a>
-              <ul class="dropdown-menu">
-                <li><a href="operating_systems.php">Operating Systems</a></li>
-                <li><a href="office_app.php">Office Applications</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a
-                class="dropdown-toggle back"
-                data-toggle="dropdown"
-                href="audio.php"
-                >Audio<span class="caret"></span
-              ></a>
-              <ul class="dropdown-menu">
-                <li><a href="in_ear.php">Headphones - In ear</a></li>
-                <li><a href="on_ear.php">Headphones - On ear</a></li>
-                <li><a href="sounsystem.php">Soundsystems</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a class="back" href="games.php">Games</a>
-            </li>
+
+            
+            
             <li>
               <form class="navbar-form navbar-left" action="/action_page.php">
                 <div class="input-group" style="color:white !important;">
                   <input
                     type="text"
                     class="form-control search-bar"
-                    placeholder="What are you looking for?"
+                    placeholder="Search for something?"
                     name="search"
                   />
                   <div
@@ -166,8 +122,16 @@
                 </div>
               </form>
             </li>
+            <li class="dropdown">
+              <div class="line"></div>
+              <a class="back" href="ourstore.php">Our Store</a>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="background:none;">
+
+            <!-- if no user is logged in -->
+            <?php if(!isset($_SESSION["user_id"])) {
+              ?>
             <li>
               <div class="line"></div>
               <a href="register.php" class="no-back"
@@ -175,8 +139,7 @@
                   class="glyphicon glyphicon-user"
                   style="color:black !important;"
                 ></span>
-                Sign Up</a
-              >
+                Sign Up</a>
             </li>
             <li>
               <div class="line"></div>
@@ -185,18 +148,45 @@
                   class="glyphicon glyphicon-log-in"
                   style="color:black !important;"
                 ></span>
-                Login</a
-              >
+                Login</a>
             </li>
+
+            <?php
+              //this means that if the user is already logged in, show Logout option
+            }else {
+                ?>
+              <li>
+                <div class="line"></div>
+                  <a href="#" style="color:black;"><span
+                  class="glyphicon glyphicon-user"
+                  style="color:black !important;"
+                ></span><?php echo $_SESSION['User_name']?></a >
+             </li>
+
+              <li>
+                <div class="line"></div>
+                <a href="logout.php" class="no-back"
+                  ><span
+                    class="glyphicon glyphicon-log-out"
+                    style="color:black !important;"
+                  ></span>
+                  Log out</a >
+             </li>
+                
+            <?php
+
+              }
+            ?>
+
+
             <li>
               <div class="line"></div>
-              <a href="#" class="no-back"
+              <a href="viewCart.php" class="no-back"
                 ><span
                   class="glyphicon glyphicon-shopping-cart"
                   style="color:black !important;"
                 ></span>
-                Cart</a
-              >
+                Cart</a>
             </li>
           </ul>
         </div>

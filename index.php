@@ -48,7 +48,7 @@
               style="color:black !important;"
             ></span>
           </button>
-          <a class="navbar-brand child" href="../index.php"
+          <a class="navbar-brand child" href="index.php"
             ><img
               src="css/images/logo7.png"
               class="child"
@@ -59,62 +59,15 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
 
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="pages/laptops.php">Laptops</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="pages/smartphones.php">Smartphones</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="pages/photo_video.php">Photo/Video</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="pages/tv.php">TV</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a
-                class="dropdown-toggle"
-                data-toggle="dropdown"
-                href="pages/software.php"
-                >Software<span class="caret"></span
-              ></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="pages/operating_systems.php">Operating Systems</a>
-                </li>
-                <li><a href="pages/office_app.php">Office Applications</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a
-                class="dropdown-toggle back"
-                data-toggle="dropdown"
-                href="pages/audio.php"
-                >Audio<span class="caret"></span
-              ></a>
-              <ul class="dropdown-menu">
-                <li><a href="pages/in_ear.php">Headphones - In ear</a></li>
-                <li><a href="pages/on_ear.php">Headphones - On ear</a></li>
-                <li><a href="pages/sounsystem.php">Soundsystems</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a class="back" href="pages/games.php">Games</a>
-            </li>
+            
+            
             <li>
               <form class="navbar-form navbar-left" action="/action_page.php">
                 <div class="input-group" style="color:white !important;">
                   <input
                     type="text"
                     class="form-control search-bar"
-                    placeholder="What are you looking for?"
+                    placeholder="Search for something?"
                     name="search"
                   />
                   <div
@@ -127,6 +80,10 @@
                   </div>
                 </div>
               </form>
+            </li>
+            <li class="dropdown">
+              <div class="line"></div>
+              <a class="back" href="pages/ourstore.php">Our Store</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="background:none;">
@@ -159,7 +116,10 @@
                 ?>
               <li>
                 <div class="line"></div>
-                  <a><i>Welcome, <?php echo $_SESSION['User_name']?></i></a >
+                  <a href="#" style="color:black;"><span
+                  class="glyphicon glyphicon-user"
+                  style="color:black !important;"
+                ></span><?php echo $_SESSION['User_name']?></a >
              </li>
 
               <li>
@@ -180,7 +140,7 @@
 
             <li>
               <div class="line"></div>
-              <a href="#" class="no-back"
+              <a href="pages/viewCart.php" class="no-back"
                 ><span
                   class="glyphicon glyphicon-shopping-cart"
                   style="color:black !important;"
@@ -195,8 +155,8 @@
     </nav>
     <br />
 
-    <div style="padding-left:3%;">
-        <div>Online User Details: <span id="user_login_status">0</span></div>
+    <div style="width:150px;height:40px;background:black;color:white;text-align:center;line-height: 40px;">
+        <div>Users online:<span id="user_login_status">0</span></div>
     </div>
 
     <div class="first-page">

@@ -19,6 +19,9 @@
       $User_email = mysqli_real_escape_string($con, $_POST['email']);
       $User_password = mysqli_real_escape_string($con, $_POST['password']);
       $User_confirm = mysqli_real_escape_string($con, $_POST['confirm']);
+      $User_adress = mysqli_real_escape_string($con, $_POST['adress']);
+      $User_city = mysqli_real_escape_string($con, $_POST['city']);
+      $User_postalcode = mysqli_real_escape_string($con, $_POST['postal-code']);
 
       if (!preg_match("/^[a-zA-Z ]+$/",$User_name)) {
           $error = true;
@@ -38,6 +41,19 @@
           $error = true;
           $error_message = "The passwords do not match";
       }
+      if(strlen($User_adress) <= 4) {
+          $error = true;
+          $error_message = "Please insert an adress!";
+      }
+      if(strlen($User_city) <= 2) {
+          $error = true;
+          $error_message = "Please insert a correct city!";
+      }
+      if(strlen($User_postalcode) < 6 || strlen($User_postalcode) > 6) {
+          $error = true;
+          $error_message = "Postal Code should have 6 characters!";
+      }
+
 
       if(!$error){
         //prevent user register with the same email
@@ -56,7 +72,7 @@
           $token=str_shuffle($token);
           $token = substr($token,0,10);
 
-          $query = "insert into users(username, email, password, token) values('$User_name','$User_email', '$hashedPassword', '$token')";
+          $query = "insert into users(username, email, password, token,adress,city,postalcode) values('$User_name','$User_email', '$hashedPassword', '$token','$User_adress','$User_city','$User_postalcode')";
           $query_run = mysqli_query($con, $query);
 
           if($query_run){
@@ -151,60 +167,16 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="laptops.php">Laptops</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="smartphones.php">Smartphones</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="photo_video.php">Photo/Video</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a href="tv.php">TV</a>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a
-                class="dropdown-toggle"
-                data-toggle="dropdown"
-                href="software.php"
-                >Software<span class="caret"></span
-              ></a>
-              <ul class="dropdown-menu">
-                <li><a href="operating_systems.php">Operating Systems</a></li>
-                <li><a href="office_app.php">Office Applications</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a
-                class="dropdown-toggle back"
-                data-toggle="dropdown"
-                href="audio.php"
-                >Audio<span class="caret"></span
-              ></a>
-              <ul class="dropdown-menu">
-                <li><a href="in_ear.php">Headphones - In ear</a></li>
-                <li><a href="on_ear.php">Headphones - On ear</a></li>
-                <li><a href="sounsystem.php">Soundsystems</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <div class="line"></div>
-              <a class="back" href="games.php">Games</a>
-            </li>
+
+            
+            
             <li>
               <form class="navbar-form navbar-left" action="/action_page.php">
                 <div class="input-group" style="color:white !important;">
                   <input
                     type="text"
                     class="form-control search-bar"
-                    placeholder="What are you looking for?"
+                    placeholder="Search for something?"
                     name="search"
                   />
                   <div
@@ -218,17 +190,24 @@
                 </div>
               </form>
             </li>
+            <li class="dropdown">
+              <div class="line"></div>
+              <a class="back" href="ourstore.php">Our Store</a>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="background:none;">
+
+            <!-- if no user is logged in -->
+            <?php if(!isset($_SESSION["user_id"])) {
+              ?>
             <li>
               <div class="line"></div>
-              <a href="#" class="no-back"
+              <a href="register.php" class="no-back"
                 ><span
                   class="glyphicon glyphicon-user"
                   style="color:black !important;"
                 ></span>
-                Sign Up</a
-              >
+                Sign Up</a>
             </li>
             <li>
               <div class="line"></div>
@@ -237,18 +216,45 @@
                   class="glyphicon glyphicon-log-in"
                   style="color:black !important;"
                 ></span>
-                Login</a
-              >
+                Login</a>
             </li>
+
+            <?php
+              //this means that if the user is already logged in, show Logout option
+            }else {
+                ?>
+             <li>
+                <div class="line"></div>
+                  <a href="#" style="color:black;"><span
+                  class="glyphicon glyphicon-user"
+                  style="color:black !important;"
+                ></span><?php echo $_SESSION['User_name']?></a >
+             </li>
+
+              <li>
+                <div class="line"></div>
+                <a href="logout.php" class="no-back"
+                  ><span
+                    class="glyphicon glyphicon-log-out"
+                    style="color:black !important;"
+                  ></span>
+                  Log out</a >
+             </li>
+                
+            <?php
+
+              }
+            ?>
+
+
             <li>
               <div class="line"></div>
-              <a href="#" class="no-back"
+              <a href="viewCart.php" class="no-back"
                 ><span
                   class="glyphicon glyphicon-shopping-cart"
                   style="color:black !important;"
                 ></span>
-                Cart</a
-              >
+                Cart</a>
             </li>
           </ul>
         </div>
@@ -361,13 +367,79 @@
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label for="adress" class="cols-sm-2 control-label"
+                  >Adress</label
+                >
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span
+                      class="input-group-addon"
+                      style="border-radius:0px !important;"
+                      ><i class="fa fa-envelope fa" aria-hidden="true"></i
+                    ></span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="adress"
+                      id="adress"
+                      placeholder="Enter your Adress"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="city" class="cols-sm-2 control-label"
+                  >City</label
+                >
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span
+                      class="input-group-addon"
+                      style="border-radius:0px !important;"
+                      ><i class="fa fa-envelope fa" aria-hidden="true"></i
+                    ></span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="city"
+                      id="city"
+                      placeholder="Enter your Adress"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="postal-code" class="cols-sm-2 control-label"
+                  >Postal Code</label
+                >
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span
+                      class="input-group-addon"
+                      style="border-radius:0px !important;"
+                      ><i class="fa fa-envelope fa" aria-hidden="true"></i
+                    ></span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="postal-code"
+                      id="postal-code"
+                      placeholder="Enter your Adress"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
 
               <div class="form-group ">
                 <input
                   type="submit"
                   name="signup"
                   value="Register"
-                  class="btn btn-primary btn-lg btn-block"
+                  class="btn btn-primary btn-lg btn-block login-button"
                 />
               </div>
               <div class="login-register"><a href="login.php">Login</a></div>
