@@ -1,11 +1,22 @@
 <?php
-  if(!isset($_SESSION)) 
+ob_start();
+if(!isset($_SESSION)) 
     { 
         session_start(); 
     } 
-  include 'Cart.php';
-$cart = new Cart;
+ include_once 'config.php';
+if( !isset($_SESSION['user_id']) ) {
+  header("Location: ../index.php");
+
+  exit;
+
+}
 ?>
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,17 +30,7 @@ $cart = new Cart;
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
-<script>
-    function updateCartItem(obj,id){
-        $.get("cartAction.php", {action:"updateCartItem", id:id, qty:obj.value}, function(data){
-            if(data == 'ok'){
-                location.reload();
-            }else{
-                alert('Cart update failed, please try again.');
-            }
-        });
-    }
-    </script>
+
 </head>
 
 <body>
@@ -165,89 +166,43 @@ $cart = new Cart;
         
         </div>
       </div>
-    </nav><br>
-
-
+    </nav>
+    <br>
 
 <div class="page">
-<div class="container">
-    <h1><strike>Your Cart</strike></h1><br><br><br><br><br>
-    <table class="table">
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th>&nbsp;</th>
-        </tr>
-    </thead>
-    <tbody>
+  <br><br><br><br><br><br>
+
+  <div class="content">
+  <div class="col-md-4 col-md-offset-4 text-center">
+    <meta charset="utf-8">
+        <h3><strike>Previous orders:</strike></h3>
+        <hr>
+
         <?php
-        if($cart->total_items() > 0){
-            //
-            $cartItems = $cart->contents();
-            foreach($cartItems as $item){
+          $user = $_SESSION["user_id"];
+          $result1 = mysqli_query($con, "SELECT * from orders
+            inner join order_items ON orders.id=order_items.order_id
+            inner join article ON order_items.product_id = article.id
+            where customer_id= ".$user);
+
+          if($result1) {
+            while($obj = $result1->fetch_object()) {
+
+              echo '<p><h4>Order number <u>#'.$obj->order_id.'</u></h4></p>';
+              echo '<p><strong>Date of acquisition</strong>: '.$obj->created.' Uhr</p>';
+              echo '<p><strong>Name of the product</strong>: '.$obj->name.'</p>';
+              echo '<p><strong>Price</strong>: '.$obj->price.'€</p>';
+              echo '<p><strong>Quantity</strong>: '.$obj->quantity.'</p>';
+              echo '<p><strong>Total price</strong>: '.$obj->total_price.'€</p>';
+
+              echo '<p><hr></p>';
+
+            }
+          }
         ?>
-        <tr>
-            <td><?php echo $item["name"]; ?></td>
-            <td><?php echo '€'.$item["price"].' EUR'; ?></td>
-            <td><input type="number" class="form-control text-center"  value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></td>
-            <td><?php echo '€'.$item["subtotal"].' EUR'; ?></td>
-            <td>
-                <a href="cartAction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Are you sure for this action?')"><i class="glyphicon glyphicon-trash"></i></a>
-            </td>
-        </tr>
-        <?php } }else{ ?>
-        <tr><td colspan="5"><p>Your cart is empty!</p></td>
-        <?php } ?>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td>
-              <a href="ourstore.php" class="bg-1"><div class="backwards"><p class="lglg1">Back</p><div class="back-backregin"></div></div></a></td>
-            <td colspan="2"></td>
-            <?php if($cart->total_items() > 0){ ?>
-            <td><strong>Total <?php echo '€'.$cart->total().' EUR'; ?></strong></td>
-            <td>
-               <a href="checkout.php" class="bg-1"><div class="placeorder"><p class="lglg2">Place order</p><div class="back-backregin"></div></div></a>
-            </td>
-            <?php } ?>
-        </tr>
-    </tfoot>
-    </table>
-</div>
+      </div>
 
-
-
-
-
-
-
-
-
-
-<br><br><br><br><br><br><br>
-<div class="apply">
-  <div class="apply-content">
-    <div class="container" style="position:relative;"><p>You want to buy a lot of stuffs but is too hard?<br><br>Make it easier</p></div><br>
-    <table class="foot-table">
-      <tr>
-        <td>
-          <a href="register.php" class="bg-1"><div class="register"><p class="lglg">Register</p><div class="back-backregin"></div></div></a>
-        </td>
-        <td>
-          <p>&nbsp;&nbsp;<strike>or</strike>&nbsp;&nbsp;</p>
-        </td>
-        <td>
-          <a href="login.php" class="bg-1"><div class="login"><p class="lglg">Login</p><div class="back-backregin"></div></div></a>
-        </td>
-      </tr>
-      </table>
-  </div>
-  
-</div>
-<div class="footer"><p style="color:white;">Copyright &copy; 2018-2019 electroBest</p></div>
-</div>
-</body>
+    
+    </div>
+  </body>
 </html>

@@ -1,5 +1,8 @@
 <?php
-  session_start();
+  if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\Exception;
   require "PHPMailer/PHPMailer.php";
@@ -193,6 +196,10 @@
             <li class="dropdown">
               <div class="line"></div>
               <a class="back" href="ourstore.php">Our Store</a>
+            </li>
+            <li class="dropdown">
+              <div class="line"></div>
+              <a class="back" href="orders.php">Your Orders</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="background:none;">

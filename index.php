@@ -1,5 +1,8 @@
 <?php
-  session_start();
+  if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
   require_once 'pages/config.php';
 
 ?>
@@ -85,6 +88,11 @@
               <div class="line"></div>
               <a class="back" href="pages/ourstore.php">Our Store</a>
             </li>
+            <li class="dropdown">
+              <div class="line"></div>
+              <a class="back" href="pages/orders.php">Your Orders</a>
+            </li>
+
           </ul>
           <ul class="nav navbar-nav navbar-right" style="background:none;">
 

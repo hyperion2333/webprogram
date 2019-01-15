@@ -1,6 +1,9 @@
 <?php
 	ob_start();
-	session_start();
+	if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 	include 'config.php';
 
 
@@ -112,6 +115,10 @@ if($cart->total_items() <= 0){
             <li class="dropdown">
               <div class="line"></div>
               <a class="back" href="ourstore.php">Our Store</a>
+            </li>
+            <li class="dropdown">
+              <div class="line"></div>
+              <a class="back" href="orders.php">Your Orders</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="background:none;">

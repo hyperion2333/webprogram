@@ -1,5 +1,8 @@
 <?php
-  session_start();
+  if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
   include_once 'config.php';
 ?>
 
@@ -79,6 +82,10 @@
             <li class="dropdown">
               <div class="line"></div>
               <a class="back" href="ourstore.php">Our Store</a>
+            </li>
+            <li class="dropdown">
+              <div class="line"></div>
+              <a class="back" href="orders.php">Your Orders</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="background:none;">
@@ -164,11 +171,11 @@
            <a class="test-test" href="cartAction.php?action=addToCart&id=<?php echo $row["id"]; ?>"> 
             <div class="thumbnail" style="border:none !important;">
                 <div class="caption">
-                    <img src="<?php echo $row['picture']; ?>" alt="<?php echo $row['name']; ?>" width="150px" height="150px">
+                    <img src="<?php echo '../images/'.$row['picture']; ?>" alt="<?php echo $row['name']; ?>" width="auto" height="auto">
                     <h4 class="list-group-item-heading"><?php echo $row["name"]; ?></h4>
                    
                     <div class="row">
-                      
+                        
                         <div class="col-md-8 description">
                             <p><?php echo $row["price"].' EUR'; ?></p>
                         </div>
