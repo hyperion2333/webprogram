@@ -28,7 +28,7 @@
 
       if (!preg_match("/^[a-zA-Z ]+$/",$User_name)) {
           $error = true;
-          $error_message = "No special characters are allowed.";
+          $error_message = "No special characters are allowed for the name.";
       }
 
       if(!filter_var($User_email,FILTER_VALIDATE_EMAIL)) {
@@ -46,7 +46,7 @@
       }
       if(strlen($User_adress) <= 4) {
           $error = true;
-          $error_message = "Please insert an adress!";
+          $error_message = "Please insert an address!";
       }
       if(strlen($User_city) <= 2) {
           $error = true;
@@ -376,7 +376,7 @@
               </div>
               <div class="form-group">
                 <label for="adress" class="cols-sm-2 control-label"
-                  >Adress</label
+                  >Address</label
                 >
                 <div class="cols-sm-10">
                   <div class="input-group">

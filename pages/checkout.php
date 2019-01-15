@@ -210,10 +210,14 @@ if($cart->total_items() <= 0){
     </thead>
     <tbody>
         <?php
+        $myItems='';
         if($cart->total_items() > 0){
             //
             $cartItems = $cart->contents();
             foreach($cartItems as $item){
+            $myItems.=nl2br("\r\n");
+            $myItems.=$item["name"] . "&nbsp;&nbsp; &nbsp;| &nbsp;&nbsp;&nbsp;" . $item["price"] . " EUR". "&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;X " . $item["qty"] . '&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;' . $item["subtotal"] . ' EUR';
+            
         ?>
         <tr>
             <td><?php echo $item["name"]; ?></td>
@@ -221,7 +225,8 @@ if($cart->total_items() <= 0){
             <td><?php echo $item["qty"]; ?></td>
             <td><?php echo '€'.$item["subtotal"].' EUR'; ?></td>
         </tr>
-        <?php } }else{ ?>
+        <?php 
+      }$myItems.=nl2br("\r\n\r\n");}else{ ?>
         <tr><td colspan="4"><p>The shopping cart is empty!</p></td>
         <?php } ?>
     </tbody>
@@ -229,13 +234,15 @@ if($cart->total_items() <= 0){
         <tr>
             <td colspan="3"></td>
             <?php if($cart->total_items() > 0){ ?>
-            <td class="text-center"><strong>Total <?php echo '€'.$cart->total().' EUR'; ?></strong></td>
-            <?php } ?>
+            <td class="text-center"><strong>Total <?php  $_SESSION["myTotal"]=$cart->total(); echo '€'.$cart->total().' EUR'; ?></strong></td>
+            <?php }
+             ?>
         </tr>
     </tfoot>
     </table>
+    <?php $_SESSION["myCart"]=$myItems;?>
     <div class="shipAddr">
-        <h4><u>Adress:</u></h4><br>
+        <h4><u>Address:</u></h4><br>
         <p><?php echo $custRow['username']; ?></p>
         <p><?php echo $custRow['email']; ?></p>
         <p><?php echo $custRow['adress']; ?></p>

@@ -1,23 +1,53 @@
 <?php
 if(!isset($_REQUEST['id'])){
-    
-
 	
  $DatabaseHost = "localhost";
  $DatabaseUser = "dbusers";
  $Database = "dbusers";
-
-
- 
- 
  }
+
+ use PHPMailer\PHPMailer\PHPMailer;
+ use PHPMailer\PHPMailer\Exception;
+ require "PHPMailer/PHPMailer.php";
+ require "PHPMailer/Exception.php";
+ require "PHPMailer/SMTP.php";
  
  session_start();
  include_once 'config.php';
 
+ //send email confirmation with purchased items
+
+ $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+ try {
+     //Server settings           
+     $mail->isSMTP();                                      // Set mailer to use SMTP  
+     $mail->SMTPAuth = true;                               // Enable SMTP authentication
+     $mail->Username = 'webProgr.test.41@gmail.com';       // SMTP username
+     $mail->Password = 'webProgr.test.41AA';               // SMTP password
+     $mail->SMTPSecure = 'ssl';                            // Enable ssl encryption
+     $mail->Port = 465;                                    // TCP port to connect to
+     $mail->Host = "smtp.gmail.com"; 
+     $mail->isHTML(true);
+ 
+     //Recipients
+     $mail->setFrom('webProgr.test.41@gmail.com', "ElectroBest");
+     $mail->addAddress($_SESSION['User_email'], $_SESSION['User_name']);     // Add a recipient
+ 
+     //Content
+     $mail->Subject = 'Order placed';
+     $mail->Body= '<h2>Order placed succesfully!</h2>
+     <p>Thank you for buying from us! Below you will find an overview with the purchased items.</p>
+     <p>'.$_SESSION["myCart"].'</p>
+     <h3>Total: '.$_SESSION["myTotal"].' EURO </h3></p>
+     <p>Have a wonderful day,<br>ElectroBest Team</p>
+     ';            
+     $mail->send();
+
+ } catch (Exception $e) {
+     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+ }
+
 ?>
-
-
 
 
 
@@ -179,7 +209,7 @@ if(!isset($_REQUEST['id'])){
     <h1 style="color:green;"><strike>Successful!</strike></h1>
     <p>Your order has been successfully submitted. <!--Der Nummer der Bestellung ist #<?php echo $_GET['id']; ?>--></p>
     <p>You will receive a confirmation of the order by e-mail in the next moment.</p>
-    <p style="color:green;">Thank you that you have choosen electroBest!</p><br><br>
+    <p style="color:green;">Thank you that you have chosen electroBest!</p><br><br>
     <a href="../index.php" class="bg-1">Main menu</a>
 </div>
 
