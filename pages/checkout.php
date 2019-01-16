@@ -223,24 +223,52 @@ if($cart->total_items() <= 0){
             <td><?php echo $item["name"]; ?></td>
             <td><?php echo '€'.$item["price"].' EUR'; ?></td>
             <td><?php echo $item["qty"]; ?></td>
-            <td><?php echo '€'.$item["subtotal"].' EUR'; ?></td>
+            <td><?php echo '€'.$item["subtotal"].' EUR'; ?></td><br>
+      
         </tr>
+      
         <?php 
       }$myItems.=nl2br("\r\n\r\n");}else{ ?>
         <tr><td colspan="4"><p>The shopping cart is empty!</p></td>
         <?php } ?>
     </tbody>
     <tfoot>
+    
+      </tr>
+            <th>Shipping cost</th>
+            <th></th>
+            <th></th>
+            <th><span id="show_ship_cost_cell"></span></th>
+        <tr>
         <tr>
             <td colspan="3"></td>
-            <?php if($cart->total_items() > 0){ ?>
-            <td class="text-center"><strong>Total <?php  $_SESSION["myTotal"]=$cart->total(); echo '€'.$cart->total().' EUR'; ?></strong></td>
+            <?php if($cart->total_items() > 0){ 
+                $totalPrice=$cart->total();
+                $_SESSION["myTotal"]=$totalPrice;
+              ?>
+            <td class="text-center"><strong>Total <span id="show_total_cost"><?php echo $totalPrice ?></span></strong></td>
             <?php }
              ?>
         </tr>
     </tfoot>
     </table>
     <?php $_SESSION["myCart"]=$myItems;?>
+
+
+
+
+
+    <div id="shipping_mode">
+        <h4><u>Select a shipping mode:</u></h4><br>
+          <input type="radio"  name="shipping" value="10" /> Normal - 10 euros<br>
+          <span id="ship1" style="font-style: italic; color:green" ></span><br>
+
+          <input type="radio" name="shipping" value="16"/> Express - 16 euros<br>
+          <span  id="ship2"  style="font-style: italic; color:green" ></span><br>
+
+    </div>
+
+
     <div class="shipAddr">
         <h4><u>Address:</u></h4><br>
         <p><?php echo $custRow['username']; ?></p>
@@ -248,17 +276,83 @@ if($cart->total_items() <= 0){
         <p><?php echo $custRow['adress']; ?></p>
         <p><?php echo $custRow['city']; ?></p>
         <p><?php echo $custRow['postalcode']; ?></p>
-
-
     </div>
+
     <div class="footbtn">
         <a href="viewCart.php" class="bg-1"><div class="backwards"><p class="lglg1">Back</p><div class="back-backregin"></div></div></a>
         <a href="cartAction.php?action=placeOrder" class="bg-1" id="order" style="right:0px !important; position: absolute;"><div class="placeorder" style="right:0px !important; position: absolute;"><p class="lglg2">Place order</p><div class="back-backregin"></div></div></a>
 		
     </div>
-    <script language="javascript" type="text/javascript">
-    
+
+
+<script language="javascript" type="text/javascript">
+
+  var cost;
+
+  $('input[type=radio][name=shipping]').change(function() {
+    if (this.value == '10') {
+      console.log(this.value);
+      document.getElementById("ship1").style.display = "visible";
+      document.getElementById("ship1").innerHTML="Delivery time: 8 days";
+      document.getElementById("ship2").innerHTML="";
+      document.getElementById("ship2").style.display = "hidden";
+      cost = this.value;
+     
+     
+      $.ajax({
+      url: "get_shipping_cost.php",
+      method: "POST",
+      data: { 
+        action:"get_cost",
+        cost: cost },
+      success: function(data) {
+        console.log("From server: " + data);
+        var c= parseFloat(data)+<?php echo $totalPrice?>;
+        document.getElementById("show_total_cost").innerHTML=c.toFixed(2);
+        document.getElementById("show_ship_cost_cell").innerHTML=data+" EUR";
+      }
+  })
+
+
+    }
+    else if (this.value == '16') {
+      console.log(this.value);
+      document.getElementById("ship2").style.display = "visible";
+      document.getElementById("ship2").innerHTML="Delivery time: 2 days"
+      document.getElementById("ship1").style.display = "hidden";
+      document.getElementById("ship1").innerHTML=""
+      cost = this.value;
+
+      $.ajax({
+      url: "get_shipping_cost.php",
+      method: "POST",
+      data: { 
+        action:"get_cost",
+        cost: cost },
+      success: function(data) {
+        console.log("From server: " + data);
+        var c=parseFloat(data)+<?php echo $totalPrice?>;
+        document.getElementById("show_total_cost").innerHTML=c.toFixed(2);
+        document.getElementById("show_ship_cost_cell").innerHTML=data+" EUR";
+      }
+  })
+  
+    }
+  });
+
+
+
+
+
+
+  
+  
+
+  
+
 </script>
+
+
 </div>
 <br><br><br><br><br><br><br>
 <div class="apply">

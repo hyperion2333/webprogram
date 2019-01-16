@@ -15,6 +15,9 @@ if(!isset($_REQUEST['id'])){
  session_start();
  include_once 'config.php';
 
+ 
+ $totalCost=$_SESSION["myTotal"]+$_SESSION["shipping_cost"];
+ $totalCost=number_format((float)$totalCost, 2, '.', '');
  //send email confirmation with purchased items
 
  $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
@@ -38,7 +41,7 @@ if(!isset($_REQUEST['id'])){
      $mail->Body= '<h2>Order placed succesfully!</h2>
      <p>Thank you for buying from us! Below you will find an overview with the purchased items.</p>
      <p>'.$_SESSION["myCart"].'</p>
-     <h3>Total: '.$_SESSION["myTotal"].' EURO </h3></p>
+     <h3>Total: '.$totalCost.' EURO </h3></p>
      <p>Have a wonderful day,<br>ElectroBest Team</p>
      ';            
      $mail->send();
