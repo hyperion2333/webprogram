@@ -409,6 +409,9 @@
           <br />
           <table class="foot-table">
             <tr>
+
+            <?php if(!isset($_SESSION["user_id"])) {
+              ?>
               <td>
                 <a href="pages/register.php" class="bg-1"
                   ><div class="register">
@@ -424,6 +427,19 @@
                     <div class="back-backregin"></div></div
                 ></a>
               </td>
+
+
+              <?php 
+            }else{
+              ?>
+              <td>
+                <a href="pages/logout.php" class="bg-1"
+                  ><div class="login">
+                    <p class="lglg">Log out</p>
+                    <div class="back-backregin"></div></div
+                ></a>
+              </td>
+            <?php }?>
             </tr>
           </table>
         </div>
