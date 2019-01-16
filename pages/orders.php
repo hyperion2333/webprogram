@@ -176,7 +176,7 @@ if( !isset($_SESSION['user_id']) ) {
   <div class="col-md-4 col-md-offset-4 text-center">
     <meta charset="utf-8">
         <h3><strike>Previous orders:</strike></h3>
-        <hr>
+        <br>
 
         <?php
           $user = $_SESSION["user_id"];
@@ -194,13 +194,17 @@ if( !isset($_SESSION['user_id']) ) {
               echo '<p><strong>Price</strong>: '.$obj->price.'€</p>';
               echo '<p><strong>Quantity</strong>: '.$obj->quantity.'</p>';
               echo '<p><strong>Total price</strong>: '.$obj->total_price.'€</p>';
+              echo '<p><strong>Method shipping</strong>: '.$obj->shipping.'</p>';
 
-              echo '<p><hr></p>';
+              echo '<p><br></p>';
 
             }
+            echo '<br><br><br><br><br><br>';
           }
         ?>
+        
       </div>
+      
 
     
     </div>

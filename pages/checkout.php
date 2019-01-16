@@ -340,16 +340,6 @@ if($cart->total_items() <= 0){
     }
   });
 
-
-
-
-
-
-  
-  
-
-  
-
 </script>
 
 

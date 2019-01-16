@@ -33,7 +33,7 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
         header("Location: viewCart.php");
  
   }elseif($_REQUEST['action'] == 'placeOrder' && $cart->total_items() > 0 ){
-        $insertOrder = mysqli_query($con,"INSERT INTO orders (customer_id, total_price, created) VALUES ('".$_SESSION['user_id']."', '".$cart->total()."', '".date("Y-m-d H:i:s")."')");
+        $insertOrder = mysqli_query($con,"INSERT INTO orders (customer_id, total_price, created,shipping) VALUES ('".$_SESSION['user_id']."', '".$cart->total()."', '".date("Y-m-d H:i:s")."','".$_SESSION["modality"]."')");
 
 
         if($insertOrder){
